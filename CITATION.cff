@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+title: "AEGIS-MHD: GPU MHD solver platform and the magnetic sieve study"
+type: software
+authors:
+  - family-names: Shaltout
+    given-names: Abdelrahman
+version: 0.1.0
+repository-code: "https://github.com/Semedo2002/MagSieve-3D"
+url: "https://github.com/Semedo2002/MagSieve-3D"
+date-released: 2026-10-20
+abstract: >-
+  GPU finite-volume MHD solver (HLLD Riemann solver in CUDA via CuPy, MUSCL, SSP-RK3, GLM divergence
+  cleaning, exact energy budget) in 2D and 3D, with the parameter study of striped magnetic fields and
+  the Richtmyer-Meshkov instability, and a high-Mach magnetized RMI benchmark.
+keywords:
+  - magnetohydrodynamics
+  - Richtmyer-Meshkov instability
+  - HLLD
+  - CUDA
+  - shock physics

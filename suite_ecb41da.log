@@ -1,0 +1,96 @@
+CuPy CUDA acceleration: ENABLED  (GPU: Quadro P1000)
+  Compute capability: 6.1
+  Total GPU memory: 4.3 GB
+NumPy 1.26.4, CuPy 13.6.0, Python 3.11.9
+Output directory: C:\Users\User\Desktop\cfd\sieve_suite\rmi_output_gpu
+GPU Solver OK
+PostProcessor OK
+
+--- Brio-Wu Shock Tube ---
+  Result: PASS
+
+--- Alfven Wave Convergence ---
+  Mean order: 1.96 (PASS)
+
+--- Outflow Boundary Reflection ---
+    fast pulse: residual amplitude after exit = 2.07e-05 of incident
+  alfven pulse: residual amplitude after exit = 3.01e-10 of incident
+  Result: PASS (tolerance 1e-02)
+
+--- Conservation & Solenoidality ---
+  uniform By=1, CT           E change   +66.9% (inflow)  conservation err 5.9e-15  h*max|divB|/max|B| 2.8e-15  [PASS]
+  striped Bz, eta=1e-2, CT   E change   +82.8% (inflow)  conservation err 1.2e-14  h*max|divB|/max|B| 0.0e+00  [PASS]
+  striped Bx (tension), CT   E change   +50.9% (inflow)  conservation err 4.4e-15  h*max|divB|/max|B| 1.7e-15  [PASS]
+  uniform By=1, GLM+Powell   E change   +66.9% (inflow)  conservation err 6.3e-15  h*max|divB|/max|B| 1.3e-02  [PASS]
+  Result: PASS
+
+--- Constrained transport: div B ---
+  field loop, 128x64, one period: CT div B 1.1e-16 -> 5.9e-15, magnetic energy kept 0.782; GLM div B 4.3e-03, energy kept 0.770
+  3D field from a vector potential in a 3D flow, 16^3: div B 0.0e+00 -> 2.5e-15 after 40 steps  [PASS]
+
+--- Cylindrical (r, z) geometry ---
+  static magnetized state, 64x8 to t = 0.5: max |v| 1.4e-15, max |dp| 3.8e-15
+  Noh, 200 cells, t = 0.6: post-shock rho 15.795 (exact 16), shock at r = 0.1975 (0.2000), pre-shock rho 3.003 (3.003); energy budget 4.3e-14, div B 0.0e+00  [PASS]
+
+--- Upstream Pressure Equilibrium ---
+  uniform_density      B0=5: P_total=13.5, gap Mach=2.73, max|v|/c_s upstream = 1.1e-01, 2.6e-02 at nx = 100, 200 (order 2.04)  [PASS]
+  uniform_temperature  B0=5: P_total=13.5, gap Mach=10, max|v|/c_s upstream = 1.9e-02, 5.8e-03 at nx = 100, 200 (order 1.70)  [PASS]
+  misspelled config key rejected: Unknown configuration key(s): eta_resistivty  [PASS]
+  Result: PASS
+
+--- 3D: z-invariance against the 2D solver ---
+  eta_resistivity=0: steps 2D/3D 122/122, max rel diff in rho 8.6e-15, z-variation 0.0e+00, energy error 3.5e-15  [PASS]
+  eta_resistivity=0.02: steps 2D/3D 122/122, max rel diff in rho 9.1e-15, z-variation 0.0e+00, energy error 7.4e-15  [PASS]
+  material, eta_fuel=0.005, eta_liner=0.04: steps 2D/3D 122/122, max rel diff in rho 1.1e-14, z-variation 0.0e+00, energy error 6.3e-15  [PASS]
+
+--- 3D: Alfven wave along z ---
+  L1 errors 7.97e-08, 3.19e-08, 8.71e-09; orders 1.32, 1.87  [PASS]
+
+--- 3D: resistive diffusion along z ---
+  amplitude 6.7404e-04 vs exp(-eta k^2 t) 6.7383e-04 (rel. error 3.2e-04); energy error 1.3e-14  [PASS]
+
+--- Resistive: two-layer steady diffusion ---
+  eta 0.04 | 0.01, nx=16, 2755 steps: max |Bz - exact|/b harmonic 3.0e-04, arithmetic 1.7e-02; energy budget residual 2.1e-13  [PASS]
+
+--- Resistive: Ohmic heating energy closure ---
+  328 steps: Ohmic heat 4.87561e-04, thermal gain 4.87655e-04 (0.02% off); magnetic loss 5.16011e-04 = Ohmic + kinetic gain 2.84e-05 + rest 9.4e-08; total energy error 1.7e-14  [PASS]
+
+--- EOS: 10 km/s aluminium impact ---
+  stiffened Al (gamma 2.862, p_inf 26.78 GPa) -> Cu (gamma 3.374, p_inf 41.09 GPa): exact p 267.0 GPa, u 3.324, Us Cu 8.994, rho Cu 14.164, rho Al 4.916
+    rel. errors Us_Cu 3.3e-03, Us_Al 7.8e-04, p 6.5e-05, rho_Cu 9.4e-05, rho_Al 2.0e-04, u 1.3e-04; energy budget 2.4e-14  [PASS]
+  Mie-Gruneisen Al -> Al: Hugoniot u_p 5, Us 12.018, p 162.2 GPa, rho 4.624
+    rel. errors Us 4.5e-03, Us_left 4.5e-03, p 6.1e-05, rho 4.2e-05, u 5.6e-05; energy budget 1.6e-14  [PASS]
+
+--- EOS: material interface in pressure equilibrium ---
+  max |p - p0|/p0: volume fraction 4.8e-10 (t = 0.2), mass fraction 7.2e+14 (20 steps); max |u - u0|/u0: 3.7e-14, 1.8e+10; energy budget (vf) 1.3e-14  [PASS]
+
+--- EOS: positivity under extreme expansion ---
+  Al, v = 5: min(p + p_inf) 1.03e-01 GPa, min c^2 1.13e+00, min rho 2.45e-01; centre P 0.103 vs exact 0.046 GPa  [PASS]
+  Al, v = 8 (cavitates): min(p + p_inf) 2.78e-11 GPa, min c^2 2.25e-09, min rho 1.71e-02  [PASS]
+  gas | Al, v = 8: min(p + p_inf) 1.00e-04 GPa, min c^2 1.43e-08, min rho 3.57e-05  [PASS]
+
+--- Radiation: bremsstrahlung decay of a uniform hot plasma ---
+  K = 3.5161e+06 eV^1/2/s, T reaches 10 eV at 10.92 us; 71 steps to 12 us: max |T - T_exact|/T 8.1e-15, |E + E_rad - E0|/E0 7.4e-16, radiated 98.0% of E0; no cooling in liner / below T_min: yes  [PASS]
+
+--- Conduction: anisotropic hot spot ---
+  B along x, 64^2: spread along B 1.0004 x 2 D_par t, across B 1.00e-04 x 2 D_par t (exact 1e-04); max 0.456 of initial, min -2.2e-12; 52 RKL2 stages vs 164 explicit steps; energy 0.0e+00  [PASS]
+  B at 45 deg, 64^2: spread along B 0.9754 x 2 D_par t, across B 2.72e-02 x 2 D_par t (exact 1e-04); max 0.423 of initial, min -8.0e-13; 52 RKL2 stages vs 164 explicit steps; energy 0.0e+00  [PASS]
+  B at 45 deg, 128^2: spread along B 0.9937 x 2 D_par t, across B 7.13e-03 x 2 D_par t (exact 1e-04); max 0.437 of initial, min -1.2e-11; 104 RKL2 stages vs 655 explicit steps; energy 8.9e-16  [PASS]
+  45 deg numerical cross-field leakage falls with resolution at order 1.93
+
+--- Conduction: fuel-liner wall exchange ---
+  field along the wall normal: t = 10.1, mean excess 0.2992 of the initial (exact 0.2982); energy 6.7e-15  [PASS]
+  field along the wall: t = 101.3, mean excess 0.2982 of the initial (exact 0.2982); energy 4.7e-15  [PASS]
+  oblique field at a cold wall, k_par/k_perp = 1e4: min heat gain of a liner cell 0.00e+00 (must be >= 0)  [PASS]
+
+--- Transport: Braginskii fits, Nernst, Ettingshausen ---
+  Braginskii fits (limits of k_perp/k_par and beta_wedge): ok
+  Nernst: field bumps moved 0.70 -> 0.3977 (B_y, faces) and 0.3977 (B_w, cells), exact 0.3980, toward the cold side; div B 0.0e+00, energy budget 2.2e-14
+  Ettingshausen: periodic box, total energy 1.7e-14, pressure redistributed by up to 2.36e-01  [PASS]
+
+--- Two-temperature plasma ---
+  equilibration: theta_e - theta_i = 0.07005 vs ODE 0.06984 (0.31%), energy 1.5e-16
+  Sod: electron entropy behind the shock = upstream to 0.00%, T_i/T_e >= 1.13 there
+  radiation cools electrons only: theta_i 1.000000 -> 1.000000, theta_e -> 0.9344  [PASS]
+
+--- Braginskii viscosity: sound-wave damping ---

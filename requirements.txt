@@ -1,0 +1,7 @@
+# tested with Python 3.11.9 and an NVIDIA GPU (CUDA 12)
+numpy==1.26.4
+cupy-cuda12x==13.6.0
+matplotlib==3.11.2
+pillow==12.3.0
+# paper/make_paper.py only
+python-docx==1.2.0

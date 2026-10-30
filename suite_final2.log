@@ -1,0 +1,264 @@
+CuPy CUDA acceleration: ENABLED  (GPU: Quadro P1000)
+  Compute capability: 6.1
+  Total GPU memory: 4.3 GB
+NumPy 1.26.4, CuPy 13.6.0, Python 3.11.9
+Output directory: C:\Users\User\Desktop\cfd\sieve_suite\rmi_output_gpu
+GPU Solver OK
+PostProcessor OK
+
+--- Brio-Wu Shock Tube ---
+  Result: PASS
+
+--- Alfven Wave Convergence ---
+  Mean order: 1.96 (PASS)
+
+--- Outflow Boundary Reflection ---
+    fast pulse: residual amplitude after exit = 2.07e-05 of incident
+  alfven pulse: residual amplitude after exit = 3.01e-10 of incident
+  Result: PASS (tolerance 1e-02)
+
+--- Conservation & Solenoidality ---
+  uniform By=1, CT           E change   +66.9% (inflow)  conservation err 5.9e-15  h*max|divB|/max|B| 2.8e-15  [PASS]
+  striped Bz, eta=1e-2, CT   E change   +82.8% (inflow)  conservation err 1.2e-14  h*max|divB|/max|B| 0.0e+00  [PASS]
+  striped Bx (tension), CT   E change   +50.9% (inflow)  conservation err 4.4e-15  h*max|divB|/max|B| 1.7e-15  [PASS]
+  uniform By=1, GLM+Powell   E change   +66.9% (inflow)  conservation err 6.3e-15  h*max|divB|/max|B| 1.3e-02  [PASS]
+  Result: PASS
+
+--- Constrained transport: div B ---
+  field loop, 128x64, one period: CT div B 1.1e-16 -> 5.9e-15, magnetic energy kept 0.782; GLM div B 4.3e-03, energy kept 0.770
+  3D field from a vector potential in a 3D flow, 16^3: div B 0.0e+00 -> 2.5e-15 after 40 steps  [PASS]
+
+--- Cylindrical (r, z) geometry ---
+  static magnetized state, 64x8 to t = 0.5: max |v| 1.4e-15, max |dp| 3.8e-15
+  Noh, 200 cells, t = 0.6: post-shock rho 15.795 (exact 16), shock at r = 0.1975 (0.2000), pre-shock rho 3.003 (3.003); energy budget 4.3e-14, div B 0.0e+00  [PASS]
+
+--- Upstream Pressure Equilibrium ---
+  uniform_density      B0=5: P_total=13.5, gap Mach=2.73, max|v|/c_s upstream = 1.1e-01, 2.6e-02 at nx = 100, 200 (order 2.04)  [PASS]
+  uniform_temperature  B0=5: P_total=13.5, gap Mach=10, max|v|/c_s upstream = 1.9e-02, 5.8e-03 at nx = 100, 200 (order 1.70)  [PASS]
+  misspelled config key rejected: Unknown configuration key(s): eta_resistivty  [PASS]
+  Result: PASS
+
+--- 3D: z-invariance against the 2D solver ---
+  eta_resistivity=0: steps 2D/3D 122/122, max rel diff in rho 8.6e-15, z-variation 0.0e+00, energy error 3.5e-15  [PASS]
+  eta_resistivity=0.02: steps 2D/3D 122/122, max rel diff in rho 9.1e-15, z-variation 0.0e+00, energy error 7.4e-15  [PASS]
+  material, eta_fuel=0.005, eta_liner=0.04: steps 2D/3D 122/122, max rel diff in rho 1.1e-14, z-variation 0.0e+00, energy error 6.3e-15  [PASS]
+
+--- 3D: Alfven wave along z ---
+  L1 errors 7.97e-08, 3.19e-08, 8.71e-09; orders 1.32, 1.87  [PASS]
+
+--- 3D: resistive diffusion along z ---
+  amplitude 6.7404e-04 vs exp(-eta k^2 t) 6.7383e-04 (rel. error 3.2e-04); energy error 1.3e-14  [PASS]
+
+--- Resistive: two-layer steady diffusion ---
+  eta 0.04 | 0.01, nx=16, 2755 steps: max |Bz - exact|/b harmonic 3.0e-04, arithmetic 1.7e-02; energy budget residual 2.1e-13  [PASS]
+
+--- Resistive: Ohmic heating energy closure ---
+  328 steps: Ohmic heat 4.87561e-04, thermal gain 4.87655e-04 (0.02% off); magnetic loss 5.16011e-04 = Ohmic + kinetic gain 2.84e-05 + rest 9.4e-08; total energy error 1.7e-14  [PASS]
+
+--- EOS: 10 km/s aluminium impact ---
+  stiffened Al (gamma 2.862, p_inf 26.78 GPa) -> Cu (gamma 3.374, p_inf 41.09 GPa): exact p 267.0 GPa, u 3.324, Us Cu 8.994, rho Cu 14.164, rho Al 4.916
+    rel. errors Us_Cu 3.3e-03, Us_Al 7.8e-04, p 6.5e-05, rho_Cu 9.4e-05, rho_Al 2.0e-04, u 1.3e-04; energy budget 2.4e-14  [PASS]
+  Mie-Gruneisen Al -> Al: Hugoniot u_p 5, Us 12.018, p 162.2 GPa, rho 4.624
+    rel. errors Us 4.5e-03, Us_left 4.5e-03, p 6.1e-05, rho 4.2e-05, u 5.6e-05; energy budget 1.6e-14  [PASS]
+
+--- EOS: material interface in pressure equilibrium ---
+  max |p - p0|/p0: volume fraction 4.8e-10 (t = 0.2), mass fraction 7.2e+14 (20 steps); max |u - u0|/u0: 3.7e-14, 1.8e+10; energy budget (vf) 1.3e-14  [PASS]
+
+--- EOS: positivity under extreme expansion ---
+  Al, v = 5: min(p + p_inf) 1.03e-01 GPa, min c^2 1.13e+00, min rho 2.45e-01; centre P 0.103 vs exact 0.046 GPa  [PASS]
+  Al, v = 8 (cavitates): min(p + p_inf) 2.78e-11 GPa, min c^2 2.25e-09, min rho 1.71e-02  [PASS]
+  gas | Al, v = 8: min(p + p_inf) 1.00e-04 GPa, min c^2 1.43e-08, min rho 3.57e-05  [PASS]
+
+--- Radiation: bremsstrahlung decay of a uniform hot plasma ---
+  K = 3.5161e+06 eV^1/2/s, T reaches 10 eV at 10.92 us; 71 steps to 12 us: max |T - T_exact|/T 8.1e-15, |E + E_rad - E0|/E0 7.4e-16, radiated 98.0% of E0; no cooling in liner / below T_min: yes  [PASS]
+
+--- Conduction: anisotropic hot spot ---
+  B along x, 64^2: spread along B 1.0004 x 2 D_par t, across B 1.00e-04 x 2 D_par t (exact 1e-04); max 0.456 of initial, min -2.2e-12; 52 RKL2 stages vs 164 explicit steps; energy 0.0e+00  [PASS]
+  B at 45 deg, 64^2: spread along B 0.9754 x 2 D_par t, across B 2.72e-02 x 2 D_par t (exact 1e-04); max 0.423 of initial, min -8.0e-13; 52 RKL2 stages vs 164 explicit steps; energy 0.0e+00  [PASS]
+  B at 45 deg, 128^2: spread along B 0.9937 x 2 D_par t, across B 7.13e-03 x 2 D_par t (exact 1e-04); max 0.437 of initial, min -1.2e-11; 104 RKL2 stages vs 655 explicit steps; energy 8.9e-16  [PASS]
+  45 deg numerical cross-field leakage falls with resolution at order 1.93
+
+--- Conduction: fuel-liner wall exchange ---
+  field along the wall normal: t = 10.1, mean excess 0.2992 of the initial (exact 0.2982); energy 6.7e-15  [PASS]
+  field along the wall: t = 101.3, mean excess 0.2982 of the initial (exact 0.2982); energy 4.7e-15  [PASS]
+  oblique field at a cold wall, k_par/k_perp = 1e4: min heat gain of a liner cell 0.00e+00 (must be >= 0)  [PASS]
+
+--- Transport: Braginskii fits, Nernst, Ettingshausen ---
+  Braginskii fits (limits of k_perp/k_par and beta_wedge): ok
+  Nernst: field bumps moved 0.70 -> 0.3977 (B_y, faces) and 0.3977 (B_w, cells), exact 0.3980, toward the cold side; div B 0.0e+00, energy budget 2.2e-14
+  Ettingshausen: periodic box, total energy 1.7e-14, pressure redistributed by up to 2.36e-01  [PASS]
+
+--- Two-temperature plasma ---
+  equilibration: theta_e - theta_i = 0.07005 vs ODE 0.06984 (0.31%), energy 1.5e-16
+  Sod: electron entropy behind the shock = upstream to 0.00%, T_i/T_e >= 1.13 there
+  radiation cools electrons only: theta_i 1.000000 -> 1.000000, theta_e -> 0.9344  [PASS]
+
+--- Braginskii viscosity: sound-wave damping ---
+  scheme damping without viscosity: 0.00031
+  B along k: extra damping 0.05116 vs 0.05264 (2.8%), energy 6.4e-14  [PASS]
+  B across k: extra damping 0.01277 vs 0.01316 (3.0%), energy 6.4e-14  [PASS]
+  B = 0: extra damping 0.05116 vs 0.05264 (2.8%), energy 6.3e-14  [PASS]
+
+--- Liner strength: elastic waves, Hugoniot elastic limit, spall ---
+  elastic pulse: 6.406 km/s vs c_L 6.421 (0.23%; bulk c0 5.328)
+  impact at 0.5 km/s: precursor 0.627 GPa vs HEL 0.621 (0.9%), front at 6.45 km/s; plastic front reaches sqrt(3 J2) = 0.2900 (Y = 0.29, 0.00%), plateau S_xx -0.1933 vs -2Y/3 -0.1933 (0.00%)
+  bar pulled apart: 10 spalled cells, all within 0.05 mm of the centre: True; intact metal min p -0.309 GPa (spall -1.2); energy budget 9.5e-15  [PASS]
+
+--- 3D parity: EOS, radiation, conduction ---
+  stiffened Al -> Cu impact: steps 2D/3D 336/336, max rel diff 9.2e-14, z-variation 0.0e+00  [PASS]
+  bremsstrahlung decay: steps 2D/3D 44/44, max rel diff 1.5e-15, z-variation 0.0e+00  [PASS]
+  conduction, field at 30 deg: steps 2D/3D 18/18, max rel diff 3.0e-14, z-variation 0.0e+00  [PASS]
+
+--- 3D: Galilean frame ---
+  roughness lab/co-moving 0.2355/0.2261 (4.0%); interface drift -0.008; energy error 1.5e-14; enstrophy differs by 40% (numerical diffusion, reported only)  [PASS]
+
+--- RMI-MHD benchmark smoke test ---
+  a(t_end): hydro 0.1381, B_x=2.5 0.0975; min p 0.995; energy error 5.5e-14; files ok  [PASS]
+
+--- FCG flux compression smoke test ---
+  2905 steps: axis B peak 489 T from 5 T, flux kept 0.907, P_B/Y peak 329, spalled cells 0; div B 0.0e+00, energy error 1.7e-13; files ok  [PASS]
+
+--- RLC drive circuit ---
+  fixed load: current within 3.1e-07 of the exact discharge, bank budget 2.8e-16  [PASS]
+  driven liner, 408 steps to 5.00 us: I 0.875 MA (thick shell 0.874), outer radius 8.121 mm (thick shell 8.083; 1.3% of the distance moved); bank + grid energy 5.7e-16, hydro budget 2.5e-14; load L from work vs radius 0.98% apart  [PASS]
+
+--- 3D strength and Nernst ---
+  spall: damaged cells 2D 18, 3D 18 per z layer, z-invariant True  [PASS]
+  parity, strength (plastic flow): steps 2D/3D 21/21, max rel diff 1.5e-13, z-variation 0.0e+00  [PASS]
+  parity, Nernst + Ettingshausen: steps 2D/3D 1240/1240, max rel diff 4.0e-12, z-variation 0.0e+00  [PASS]
+  shear wave along z (S_xz): amplitude vs cos(k sqrt(G/rho) t) at 1/8, 1/4, 3/8 period, max error 2.7e-03 of the amplitude  [PASS]
+  Nernst along z: bumps moved 0.50 -> 0.6325 (B_x), 0.6325 (B_y), exact 0.6358; div B 0.0e+00  [PASS]
+
+--- MPI domain decomposition ---
+  2D Orszag-Tang, eta 1e-3, periodic x: 2 ranks vs 1, 39/39 steps, max rel diff 2.0e-15, total energy 0.0e+00, div B 1.3e-15 (halo mpi)  [PASS]
+  2D Al, strength + spall, open x: 2 ranks vs 1, 21/21 steps, max rel diff 1.5e-14, total energy 0.0e+00, div B 0.0e+00 (halo mpi)  [PASS]
+  3D Orszag-Tang-like, periodic: 2 ranks vs 1, 10/10 steps, max rel diff 1.5e-15, total energy 0.0e+00, div B 8.3e-16 (halo mpi)  [PASS]
+MPI_CHECK PASS
+  2D Orszag-Tang, eta 1e-3, periodic x: 3 ranks vs 1, 39/39 steps, max rel diff 0.0e+00, total energy 0.0e+00, div B 2.0e-15 (halo mpi)  [PASS]
+  2D Al, strength + spall, open x: 3 ranks vs 1, 21/21 steps, max rel diff 2.2e-13, total energy 0.0e+00, div B 0.0e+00 (halo mpi)  [PASS]
+  3D Orszag-Tang-like, periodic: 3 ranks vs 1, 10/10 steps, max rel diff 0.0e+00, total energy 0.0e+00, div B 8.8e-16 (halo mpi)  [PASS]
+MPI_CHECK PASS
+
+--- Grey FLD radiation ---
+  equilibration: gas temperature at t = 0.05 within 0.67% of the exact ODE (of its change); final a T^4 = E_r to 7.8e-15; gas + radiation energy 5.3e-15  [PASS]
+  optically thick Gaussian: second moment growth vs 2 D t per direction: 2D 0.02% off, r-z 0.00% off, 3D 0.02% off  [PASS]
+  optically thin, hot wall: front (E_r = 1/2) at x = 0.4938 at c t = 0.50  [PASS]
+  advection with the flow (v = 0.5, t = 0.4): pulse centre moved 0.2000 (exact 0.2000); gas + radiation energy 0.0e+00  [PASS]
+
+--- 3D output and rendering ---
+  wrote 2 frames (.vti/.pvd and .h5), read back to 0.0e+00; rendered 2 PNGs (pixel spread 52) and render.mp4  [PASS]
+
+--- Tabular EOS and opacities ---
+  SESAME ASCII (301, 502, 505) round trip: 1.1e-15  [PASS]
+  ideal-gas table vs ideal gas, Sod: 584/584 steps, max rel diff 9.0e-14  [PASS]
+  Mie-Gruneisen table vs analytic, 2 km/s Al impact: shocked p 17.998 vs 17.998 GPa, max rel diff 2.0e-04; p(e) across the table edge: largest step 2.9e-04 of the range (4000 samples)  [PASS]
+  device EOS (fused kernels) vs array EOS: 160k random states 2.6e-10, impact run 1.4e-14  [PASS]
+  FLD with tabulated opacities vs the same power laws: max rel diff 1.6e-11  [PASS]
+
+--- Validation metrics and calibration ---
+  true model: chi2_nu 1.001 (dof 801), RMS 1.000 sigma  [PASS]
+  37 ns delay: peak offset 37.5 ns, fitted shift -37.5 ns  [PASS]
+  amplitude scan: 0.9982 +- 0.0029 (true 1, Fisher sigma 0.0029)  [PASS]
+  CSV round trip  [PASS]
+
+--- Adaptive mesh refinement ---
+  periodic MHD box, 24 coarse steps, 1 patches (moved: True, fine cells 8% of a uniform fine grid): mass/momentum/energy 1.6e-15, div B 1.7e-14  [PASS]
+  three touching patches (edge and corner), 24 steps: mass/momentum/energy 1.7e-15, div B 5.4e-15, shared-edge faces agree to 2.1e-15  [PASS]
+  T-junction of three patches, 60 steps: mass/momentum/energy 4.4e-15, div B (both levels) 6.1e-15  [PASS]
+  CUDA-graph replay vs eager, 12 steps with regrids: max difference 0.0e+00 (replays: coarse 11, fine+post 47, sync 11)  [PASS]
+  gas / stiffened-gas slab through a fixed patch (60 steps): max |p - p0| 1.3e-13, |u - u0| 1.2e-14  [PASS]
+  magnetized blast wave vs a uniform 256^2 run: L1 density error coarse 64^2 0.0429, AMR 64^2 + ratio-4 patches 0.0185 (0.43x) with at most 35% (mean 21%) of the fine cells  [PASS]
+
+--- AMR with resistive, conduction, FLD and strength terms ---
+  resistive : moving touching patches, 12 steps: conservation 5.9e-16 (registers off: 1.4e-07), div B 2.8e-15; feature in a patch: L1 error vs uniform 64^2 1.7e-07 (coarse 9.7e-03)  [PASS]
+  conduction: moving touching patches, 12 steps: conservation 8.4e-16 (registers off: 1.1e-04), div B 0.0e+00; feature in a patch: L1 error vs uniform 64^2 1.4e-06 (coarse 1.4e-02)  [PASS]
+  FLD       : moving touching patches, 12 steps: conservation 5.1e-16 (registers off: 2.7e-04), div B 0.0e+00; feature in a patch: L1 error vs uniform 64^2 1.7e-05 (coarse 3.5e-03)  [PASS]
+  strength  : moving touching patches, 12 steps: conservation 7.8e-16 (registers off: 1.7e-07), div B 0.0e+00; feature in a patch: L1 error vs uniform 64^2 4.0e-07 (coarse 5.5e-04)  [PASS]
+
+--- AMR with Hall, Nernst, two-temperature, gyroviscosity, viscosity, radiation ---
+  Hall       : moving touching patches, 12 steps: conservation 7.1e-16 (control 3.0e-07), div B 1.8e-15; feature in a patch: L1 error vs uniform 64^2 7.6e-08 (coarse 9.8e-03)  [PASS]
+  Nernst     : moving touching patches, 12 steps: conservation 8.4e-16 (control 1.1e-05), div B 1.6e-15; feature in a patch: L1 error vs uniform 64^2 1.2e-06 (coarse 5.7e-03)  [PASS]
+  two-temp   : moving touching patches, 12 steps: conservation 6.3e-16 (control 4.7e-05), div B 2.0e-15; feature in a patch: L1 error vs uniform 64^2 5.1e-07 (coarse 1.8e-02)  [PASS]
+  gyroviscous: moving touching patches, 12 steps: conservation 6.4e-16 (control 2.6e-05), div B 2.0e-15; feature in a patch: L1 error vs uniform 64^2 4.9e-05 (coarse 5.8e-03)  [PASS]
+  viscosity  : moving touching patches, 12 steps: conservation 6.4e-16 (control 4.2e-06), div B 2.1e-15; feature in a patch: L1 error vs uniform 64^2 3.1e-06 (coarse 4.2e-03)  [PASS]
+  radiation  : moving touching patches, 12 steps: conservation 8.2e-16 (control 1.2e-03), div B 2.4e-15; feature in a patch: L1 error vs uniform 64^2 3.0e-05 (coarse 1.2e-02)  [PASS]
+  electron-energy register (electron conduction across a patch edge): max |dT_i - dT_i(uniform 64^2)| 8.4e-04 with it, 6.9e-03 without  [PASS]
+
+--- 3D cylindrical geometry (r, theta, z) ---
+  3D cylindrical with d/dtheta = 0 vs the 2D r-z solver, 30 steps: largest difference 1.6e-14, div B 1.7e-15  [PASS]
+  m = 1 blob carried onto the axis along a uniform field (t = 0.3): centroid error 3.4e-02 / 1.4e-02, field deviation 2.7e-02 / 1.2e-02 at 16 x 24 / 32 x 48 cells (r x theta); energy 4.0e-14, div B 2.0e-14  [PASS]
+
+--- Multigroup flux-limited diffusion ---
+  one group vs grey FLD, 10 steps: 2.0e-12  [PASS]
+  8 grey groups vs grey FLD (thick): sum of groups within 1.0e-03, energy 0.0e+00  [PASS]
+  Kramers + edge, 12 groups, uniform box: relaxed spectrum vs a T^4 b_g(T) 5.4e-13, energy 4.3e-16  [PASS]
+  decoupled groups, diffusion limit: D_g = c/(3 rho kR_g) from 9.4e-06 to 1.6e-02; peak vs exact Gaussian within 1.3e-02  [PASS]
+  2D solver, Al group table (4 groups, bound-free edges), hot spot, 15 steps: gas + radiation energy 1.3e-15, radiation now 4.0e-01 of the total  [PASS]
+
+--- Experimental data suite ---
+  datasets: copper 145 shots, nickel 19 shots, checksums verified; a tampered file refused: True  [PASS]
+  shot trace CSV round trip: 0.0e+00  [PASS]
+  copper plate impacts (5 Up values) vs 143 Marsh shots: RMS 0.118 km/s (1.8%), chi2_nu 0.82 (sigma 2% assumed); simulated vs the table's own Hugoniot within 0.28%  [PASS]
+
+--- Hall term and anisotropic resistivity ---
+  whistler      (d_i k = 1): omega exact -10.1664; relative error N=32 2.8e-04, N=64 8.4e-05 (order 1.7)  [PASS]
+  ion cyclotron (d_i k = 1): omega exact +3.8832; relative error N=32 6.1e-03, N=64 1.5e-03 (order 2.0)  [PASS]
+  anisotropic resistivity (eta_perp = 1.96 eta_par): B_z ripple decay rate with J along B 0.3945 (eta_par k^2 = 0.3948), across B 0.7685 (eta_perp k^2 = 0.7738)  [PASS]
+  Hall + anisotropic resistivity, periodic box, 60 steps (whistler-limited): energy 4.0e-15, div B 2.4e-15  [PASS]
+
+--- Ion gyroviscosity and ion conduction ---
+  fast wave across B, gyro d_i = 0.00: omega exact 10.2604 (no FLR 10.2604); relative error N=32 2.2e-03, N=64 6.5e-04  [PASS]
+  fast wave across B, gyro d_i = 1.04: omega exact 14.5132 (no FLR 10.2604); relative error N=32 5.8e-05, N=64 2.2e-06  [PASS]
+  ion conduction: T_i ripple decay 0.5260 (D k^2 = 0.5264), across B with x_i = 3: 0.0526 (D k^2 / 10 = 0.0526); electron entropy change 0.0e+00, energy 4.4e-16  [PASS]
+  gyroviscosity + ion conduction, two-temperature periodic box, 40 steps: energy 2.4e-15, div B 6.3e-16  [PASS]
+
+--- Generated material tables (tools/generate_sesame.py) ---
+  tables al, cu, dt, au, pb load into the tabular EOS (largest monotonicity fix 1.1e-05 of a row); Al SESAME ASCII round trip 8.9e-15  [PASS]
+  ambient and Hugoniot (km/s, measured in brackets): al c_s 5.33 (5.33) Us(2) 8.11 (8.01); cu c_s 3.94 (3.94) Us(2) 6.91 (6.92); au c_s 3.06 (3.06) Us(2) 6.28 (6.20); pb c_s 2.05 (2.05) Us(2) 4.99 (4.97); |p(rho0, 300 K)| / K0 3e-16, sound speed (fitted) within 0.0%, Hugoniot (not fitted) within 2.7%  [PASS]
+  fully ionized limit: p / ((1 + Z) rho k T / m) dt 0.9997, al 1.0016; kappa_R / Thomson dt 1.0000, al 1.0000  [PASS]
+  thermodynamic consistency, 200 random states: largest residual 1.4e-05  [PASS]
+  tabular p(rho, e) vs the model, Al 300 x 160 table, 300 random states per region (error relative to |p| + 1e-3 K0): compressed (rho0-10 rho0, 1e3-1e7 K) median 9.6e-04, largest 7.6e-03; hot (0.01-10 rho0, 2e4-1e7 K) median 1.3e-03, largest 2.9e-03; expanded liquid-vapour (0.01-1 rho0, 1e3-2e4 K) median 3.9e-04, largest 3.8e-02 (the last, where tension and thermal pressure cancel, is reported, not tested)  [PASS]
+
+  brio_wu        PASS
+  alfven         PASS
+  reflection     PASS
+  conservation   PASS
+  ct             PASS
+  cylindrical    PASS
+  equilibrium    PASS
+  z_invariance   PASS
+  alfven_z       PASS
+  resistive_z    PASS
+  resistive_layers PASS
+  ohmic          PASS
+  eos_impact     PASS
+  eos_interface  PASS
+  eos_positivity PASS
+  radiation      PASS
+  conduction     PASS
+  wall_conduction PASS
+  transport      PASS
+  twotemp        PASS
+  viscosity      PASS
+  strength       PASS
+  parity3d       PASS
+  galilean       PASS
+  rmi_mhd        PASS
+  fcg            PASS
+  circuit        PASS
+  solid_nernst_3d PASS
+  mpi            PASS
+  fld            PASS
+  render3d       PASS
+  tabular        PASS
+  validation     PASS
+  amr            PASS
+  amr_physics    PASS
+  amr_transport  PASS
+  cylindrical3d  PASS
+  multigroup     PASS
+  experimental   PASS
+  hall           PASS
+  ion_transport  PASS
+  sesame         PASS
+exit 0

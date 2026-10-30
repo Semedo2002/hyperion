@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aegis-mhd"
+version = "0.1.0"
+description = "AEGIS-MHD: GPU finite-volume MHD solver platform (HLLD, CUDA via CuPy), with the magnetic sieve / Richtmyer-Meshkov study"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Abdelrahman Shaltout" }]
+keywords = ["magnetohydrodynamics", "Richtmyer-Meshkov", "HLLD", "CUDA", "CuPy", "shock physics"]
+dependencies = [
+    "numpy>=1.26",
+    "cupy-cuda12x>=13",
+    "matplotlib>=3.8",
+    "pillow>=10",
+]
+
+[project.urls]
+Repository = "https://github.com/Semedo2002/MagSieve-3D"
+
+[project.optional-dependencies]
+paper = ["python-docx>=1.1"]
+viz = ["pyvista>=0.44", "imageio>=2.31", "imageio-ffmpeg>=0.5", "h5py>=3.9"]
+mpi = ["mpi4py>=4.0"]
+fno = ["nvidia-cublas-cu12>=12"]     # GPU matrix products for the neural-operator predictor
+fft = ["nvidia-cufft-cu12>=11"]       # CuPy FFT (3D cylindrical azimuthal filter) with the pip CUDA wheels
+cad = ["gmsh>=4.11"]                 # STEP / IGES import (OpenCASCADE); STL needs nothing
+
+[tool.setuptools]
+packages = ["aegis", "aegis.problems"]
+
+[tool.setuptools.package-data]
+aegis = ["hlld_kernel.cu", "eos_fused.cu", "data/experimental/*"]
