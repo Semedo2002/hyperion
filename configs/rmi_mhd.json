@@ -1,0 +1,22 @@
+{
+  "description": "High-Mach RMI, rho2/rho1 = 10 (A ~ 0.82), Mach 5: hydro vs shock-parallel field B0 = 2.5",
+  "out_dir": "results/rmi_mhd",
+  "common": {
+    "mach": 5.0,
+    "density_ratio": 10.0,
+    "eta0": 0.05,
+    "mode": 1,
+    "nx": 1024,
+    "ny": 128,
+    "x_max": 8.0,
+    "y_max": 1.0,
+    "x_interface": 1.0,
+    "t_end": 1.5,
+    "n_frames": 31
+  },
+  "quick": {"nx": 256, "ny": 32, "t_end": 0.8, "n_frames": 9},
+  "cases": {
+    "hydro": {"field": "none", "B0": 0.0},
+    "mhd_parallel": {"field": "parallel", "B0": 2.5}
+  }
+}
