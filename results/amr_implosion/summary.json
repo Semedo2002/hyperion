@@ -1,0 +1,39 @@
+{
+  "t_end": 0.2,
+  "n_coarse": 128,
+  "ratio": 4,
+  "reference": {
+    "rho_core_max": 24.019451442163803,
+    "T_core_max": 20.7697841058101,
+    "R_core": 0.3651506629399274
+  },
+  "uniform_coarse": {
+    "rho_core_max": 24.920678032501375,
+    "T_core_max": 15.25495971652793,
+    "R_core": 0.27167504069222276
+  },
+  "amr": {
+    "rho_core_max": 30.197769307706217,
+    "T_core_max": 24.54987392881891,
+    "R_core": 0.3258741472280052
+  },
+  "L1_rel_density_vs_fine": {
+    "uniform_coarse": 0.6193578531877096,
+    "amr": 0.39518212662126534
+  },
+  "fine_fraction_mean": 0.44057373046875,
+  "fine_fraction_max": 0.685791015625,
+  "wall_s": {
+    "uniform_coarse": 6.073309421539307,
+    "uniform_fine": 273.08504700660706,
+    "amr": 232.22293877601624
+  },
+  "amr_energy_error": 6.672461450631566e-14,
+  "amr_div_B": 0.0,
+  "patches_final": 1,
+  "region": "all",
+  "cell_um": {
+    "coarse": 15.625,
+    "fine": 3.90625
+  }
+}

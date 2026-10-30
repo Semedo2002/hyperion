@@ -1,0 +1,48 @@
+{
+  "bubble": {
+    "wall_s": {
+      "amr": 216.80671215057373,
+      "uniform_fine": 371.39247965812683,
+      "uniform_coarse": 7.635944128036499
+    },
+    "amr_over_uniform_fine": 0.5837671036046503,
+    "fine_fraction_mean": 0.0750723397859963,
+    "fine_fraction_max": 0.096343994140625,
+    "L1_density_vs_fine": {
+      "amr": 0.020002962526829343,
+      "coarse": 0.032141570505961455
+    },
+    "amr_energy_error": 3.650091704005738e-14,
+    "amr_div_b": 6.819055295355463e-12,
+    "coarse_steps": 372,
+    "fine_steps": 1415,
+    "graph_launches": {
+      "fine+post": 1487,
+      "coarse": 371,
+      "sync": 371
+    }
+  },
+  "fuel": {
+    "wall_s": {
+      "amr": 69.41220092773438,
+      "uniform_fine": 111.13930892944336,
+      "uniform_coarse": 2.6275057792663574
+    },
+    "amr_over_uniform_fine": 0.6245513094903318,
+    "fine_fraction_mean": 0.08006095886230469,
+    "fine_fraction_max": 0.1358642578125,
+    "L1_density_vs_fine": {
+      "amr": 0.4105576104987233,
+      "coarse": 0.5330811084168869
+    },
+    "amr_energy_error": 2.0821059625688493e-14,
+    "amr_div_b": 0.0,
+    "coarse_steps": 192,
+    "fine_steps": 789,
+    "graph_launches": {
+      "fine+post": 767,
+      "coarse": 191,
+      "sync": 191
+    }
+  }
+}

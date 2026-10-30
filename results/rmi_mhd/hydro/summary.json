@@ -1,0 +1,72 @@
+{
+  "params": {
+    "name": "hydro",
+    "mach": 5.0,
+    "rho1": 1.0,
+    "p1": 1.0,
+    "density_ratio": 10.0,
+    "gamma": 1.6666666666666667,
+    "eta0": 0.05,
+    "mode": 1,
+    "field": "none",
+    "B0": 0.0,
+    "nx": 1024,
+    "ny": 128,
+    "x_max": 8.0,
+    "y_max": 1.0,
+    "x_interface": 1.0,
+    "shock_gap": 0.2,
+    "interface_cells": 1.5,
+    "t_end": 1.5,
+    "cfl": 0.3,
+    "diag_every": 10,
+    "n_frames": 31
+  },
+  "incident": {
+    "rho": 3.5714285714285716,
+    "p": 31.0,
+    "u": 4.6475800154488995,
+    "B_t": 0.0,
+    "vs": 6.454972243679028
+  },
+  "interaction": {
+    "p": 76.80261392520556,
+    "u": 2.3649454371641343,
+    "rhoL": 6.0153324751823565,
+    "rhoR": 38.143624411224536,
+    "left_shock": true,
+    "right_shock": true,
+    "S_transmitted": 3.2052584695612416,
+    "S_reflected": -0.9708102521227117
+  },
+  "alfven_margins": {},
+  "linear": {
+    "k": 6.283185307179586,
+    "du": 2.3649454371641343,
+    "A_pre": 0.8181818181818182,
+    "A_post": 0.7275600286186105,
+    "a0": 0.05,
+    "a0_post": 0.031681211414348175,
+    "t_impact": 0.03098386676965934,
+    "v_impulsive": 0.3425086978798704,
+    "v_meyer_blewett": 0.4751964257754803
+  },
+  "result": {
+    "steps": 5412,
+    "wall_s": 505.4403455257416,
+    "t_end": 1.5,
+    "a_final": 0.3167282069937445,
+    "a_max": 0.3167282069937445,
+    "omega_max_peak": 57.78811805507093,
+    "energy_error_max": 2.8524415354914116e-12,
+    "divB_rel_max": 0.0,
+    "p_min": 0.9999999999999998,
+    "rho_min": 1.0,
+    "n_frames": 31
+  },
+  "files": {
+    "diagnostics": "diagnostics.csv",
+    "frames": "frames.npz",
+    "vtk_series": "rmi.pvd"
+  }
+}

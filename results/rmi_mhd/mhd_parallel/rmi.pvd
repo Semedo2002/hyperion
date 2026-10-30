@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<VTKFile type="Collection" version="0.1">
+  <Collection>
+    <DataSet timestep="0" file="vtk/frame_0000.vti"/>
+    <DataSet timestep="0.0499681" file="vtk/frame_0001.vti"/>
+    <DataSet timestep="0.0998761" file="vtk/frame_0002.vti"/>
+    <DataSet timestep="0.150089" file="vtk/frame_0003.vti"/>
+    <DataSet timestep="0.200073" file="vtk/frame_0004.vti"/>
+    <DataSet timestep="0.250058" file="vtk/frame_0005.vti"/>
+    <DataSet timestep="0.300042" file="vtk/frame_0006.vti"/>
+    <DataSet timestep="0.350027" file="vtk/frame_0007.vti"/>
+    <DataSet timestep="0.400011" file="vtk/frame_0008.vti"/>
+    <DataSet timestep="0.449995" file="vtk/frame_0009.vti"/>
+    <DataSet timestep="0.49998" file="vtk/frame_0010.vti"/>
+    <DataSet timestep="0.549964" file="vtk/frame_0011.vti"/>
+    <DataSet timestep="0.599949" file="vtk/frame_0012.vti"/>
+    <DataSet timestep="0.649933" file="vtk/frame_0013.vti"/>
+    <DataSet timestep="0.699918" file="vtk/frame_0014.vti"/>
+    <DataSet timestep="0.749902" file="vtk/frame_0015.vti"/>
+    <DataSet timestep="0.799886" file="vtk/frame_0016.vti"/>
+    <DataSet timestep="0.849871" file="vtk/frame_0017.vti"/>
+    <DataSet timestep="0.900126" file="vtk/frame_0018.vti"/>
+    <DataSet timestep="0.95011" file="vtk/frame_0019.vti"/>
+    <DataSet timestep="1.00009" file="vtk/frame_0020.vti"/>
+    <DataSet timestep="1.05008" file="vtk/frame_0021.vti"/>
+    <DataSet timestep="1.10006" file="vtk/frame_0022.vti"/>
+    <DataSet timestep="1.15005" file="vtk/frame_0023.vti"/>
+    <DataSet timestep="1.20003" file="vtk/frame_0024.vti"/>
+    <DataSet timestep="1.25002" file="vtk/frame_0025.vti"/>
+    <DataSet timestep="1.3" file="vtk/frame_0026.vti"/>
+    <DataSet timestep="1.34999" file="vtk/frame_0027.vti"/>
+    <DataSet timestep="1.39997" file="vtk/frame_0028.vti"/>
+    <DataSet timestep="1.44995" file="vtk/frame_0029.vti"/>
+    <DataSet timestep="1.49994" file="vtk/frame_0030.vti"/>
+  </Collection>
+</VTKFile>
